@@ -1,3 +1,19 @@
+let firstOperand = ''
+let secondOperand = ''
+let currentOperation = null
+
+const clearButton = document.getElementById('btnDel');
+const display = document.getElementById('display');
+
+clearButton.addEventListener('click', clear);
+
+function clear() {
+  firstOperand = ''
+  secondOperand = ''
+  currentOperation = null
+  display.textContent = 0;
+}
+
 function add(a, b) {
   let number = a + b;
   number = Math.round(number * 1000) / 1000;
@@ -39,5 +55,3 @@ function operate(operator, a, b) {
       return null
   }
 }
-
-console.log(operate('/', 1, 4));
