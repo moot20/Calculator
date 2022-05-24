@@ -16,7 +16,7 @@ body {
   padding: 10px;
 }
 
-.display {
+#display {
   background: black; 
   grid-column-start: 1; 
   grid-column-end: 5; 
