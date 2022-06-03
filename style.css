@@ -37,7 +37,8 @@ body {
 
 .btnDiv,
 .btnNum,
-.btnOp {
+.btnOp,
+.btnEqual {
   font-weight: bold;
   font-size: 22px;
   cursor: pointer;
@@ -46,7 +47,8 @@ body {
 
 .btnDiv:active,
 .btnNum:active,
-.btnOp:active {
+.btnOp:active,
+.btnEqual:active {
   transform: translateY(3px);
 }
 
@@ -55,7 +57,8 @@ body {
   background-color: lightgrey;
 }
 
-.btnOp {
+.btnOp,
+.btnEqual {
   border-radius: 15%;
   background-color: orange;
   color: white;
