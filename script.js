@@ -5,11 +5,22 @@ let shouldResetScreen = false
 
 const clearButton = document.getElementById('btnDel');
 const display = document.getElementById('display');
-const numbButton = document.querySelectorAll('.btnNum')
-const operatorButton = document.querySelectorAll('.btnOp')
-const equalButton = document.getElementsByClassName('btnEqual')
+const numbButton = document.querySelectorAll('.btnNum');
+const operatorButton = document.querySelectorAll('.btnOp');
+const equalButton = document.getElementById('btnEqual');
+const signButton = document.getElementById('btnSign');
+const percentButton = document.getElementById('btnPercent');
 
 clearButton.addEventListener('click', clear);
+
+signButton.addEventListener('click', setSign);
+
+percentButton.addEventListener('click', givePercent);
+
+equalButton.addEventListener('click', () => {
+  display.textContent = operate(currentOperation, firstOperand, display.textContent);
+  firstOperand = display.textContent;
+});
 
 numbButton.forEach((button) => {
     button.addEventListener('click', () => setNumb(button.textContent));
@@ -31,7 +42,7 @@ operatorButton.forEach((button) => {
 })
 
 function setNumb (number) {
-  if (display.textContent === '0' || shouldResetScreen)
+  if (display.textContent === '' || shouldResetScreen)
     resetScreen()
       display.textContent += number;
 }
@@ -46,6 +57,14 @@ function clear() {
   secondOperand = ''
   currentOperation = null
   display.textContent = '';
+}
+
+function setSign () {
+  display.textContent = display.textContent * (-1);
+}
+
+function givePercent () {
+  display.textContent = display.textContent / 100;
 }
 
 function add(a, b) {
