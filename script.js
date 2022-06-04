@@ -2,6 +2,7 @@ let firstOperand = ''
 let secondOperand = ''
 let currentOperation = null
 let shouldResetScreen = false
+let percentToggle = false
 
 const clearButton = document.getElementById('btnDel');
 const display = document.getElementById('display');
@@ -20,6 +21,8 @@ percentButton.addEventListener('click', givePercent);
 equalButton.addEventListener('click', () => {
   display.textContent = operate(currentOperation, firstOperand, display.textContent);
   firstOperand = display.textContent;
+  secondOperand = '';
+  currentOperation = null;
 });
 
 numbButton.forEach((button) => {
@@ -28,7 +31,7 @@ numbButton.forEach((button) => {
 
 operatorButton.forEach((button) => {
   button.addEventListener('click', () => {
-    if (firstOperand !== '') {
+    if (currentOperation !== null) {
       display.textContent = operate(currentOperation, firstOperand, display.textContent);
       firstOperand = display.textContent;
       currentOperation = button.textContent;
@@ -53,9 +56,9 @@ function resetScreen() {
 }
 
 function clear() {
-  firstOperand = ''
-  secondOperand = ''
-  currentOperation = null
+  firstOperand = '';
+  secondOperand = '';
+  currentOperation = null;
   display.textContent = '';
 }
 
@@ -64,7 +67,13 @@ function setSign () {
 }
 
 function givePercent () {
-  display.textContent = display.textContent / 100;
+  if (percentToggle === false) {
+    display.textContent = display.textContent / 100;
+    percentToggle = true;
+  } else {
+    display.textContent = display.textContent * 100;
+    percentToggle = false;
+  }
 }
 
 function add(a, b) {
